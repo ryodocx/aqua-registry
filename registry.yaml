@@ -652,6 +652,25 @@ packages:
       pattern:
         checksum: ^(\b[A-Fa-f0-9]{64}\b)
         file: "^\\b[A-Fa-f0-9]{64}\\b\\s+(\\S+)$"
+  - name: Kong/insomnia/inso
+    type: github_release
+    repo_owner: Kong
+    repo_name: insomnia
+    asset: inso-{{.OS}}-{{trimV .Version | trimPrefix "lib@"}}.{{.Format}}
+    version_filter: 'Version startsWith "lib@"'
+    format: zip
+    description: The Insomnia CLI that integrates directly with your CI/CD pipeline with ease
+    replacements:
+      darwin: macos
+    overrides:
+      - goos: linux
+        format: tar.xz
+    supported_envs:
+      - darwin
+      - amd64
+    rosetta2: true
+    files:
+      - name: inso
   - type: github_release
     repo_owner: LGUG2Z
     repo_name: komorebi
